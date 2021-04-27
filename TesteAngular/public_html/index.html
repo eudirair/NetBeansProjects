@@ -1,0 +1,665 @@
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <title>Racha_Conta_App</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <link href="css/seu-stylesheet.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   	    <link rel="stylesheet" href="css/w3.css">
+        <link rel="stylesheet" href="css/color_telas.css">
+		<link rel="stylesheet" href="fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css">
+		
+		 <script src="lib/angular/angular.min.js"></script>
+		 <script>
+		       angular.module("RachaConta",[]);
+			   angular.module("RachaConta").controller("RachaContaCtrl", function{$scope});
+			       $scope.app = "Aaaaa";
+		 </script>
+		
+</head>
+<body ng-controller="RachaContaCtrl">
+  <!--primeira tela-->
+    <div>
+	     <h4>{{app}}</h4>
+	</div>
+		<br><br><br><br><br>
+		<div ng-show="exibirTelaLogoInicial">
+			<div>
+			<fieldset>
+					<div class="w3-container w3-center">  
+					<img src="img/RACHACONTA.jpg" class="w3-round-xlarge" alt="Norway" style="width:100%">
+				</div>
+				<br><br><br>
+				<div class="w3-container w3-center">
+					<button class="w3-btn w3-border w3-XXLarge" ng-click="abrirTelaAddParticipantes()">Rachar a Conta</button>
+				</div>
+				<div class="w3-center">
+			       <p><i class="w3-jumbo w3-spin fa fa-refresh"></i></p>
+				</div>
+			</fieldset>
+		   </div>
+		  </div>
+		
+	
+
+
+ <!--proxima tela-->
+  <div ng-show="exibirTelaAddParticipantes">
+       <div class="w3-display-container">
+       <div class="w3-container w3-padding-16 w3-teal w3-center">
+       <h5>Add Participantes</h5>
+       </div>
+        <div class="w3-panel w3-padding-larg w3-display-topleft">
+       <button class="w3-button w3-circle w3-black" ng-click="salvar(usuario)" ng-disabled="!usuario.descricao" ng-model="qtdparticipantes">+</button>
+       </div>
+     </div>
+     <br>
+   <form class="w3-container">
+         <h5>Nome dos participantes</h5>
+        <input class="w3-input w3-animate-input" type="text" style="width:100%" ng-model ="usuario.descricao"><br>
+    <!-- <button ng-click="salvar(usuario)">Ok</button> -->
+   </form>
+ <div class="w3-container color_telas-primario">
+<br>
+<div class="w3-display w3-border">
+<div>
+ <table>
+  <thead>
+    <tr>
+	  <th></th>
+	   <th></th>
+	    <th></th>
+	</tr>
+  </thead>
+  <tbody>
+    <tr class="w3-ul w3-border"  ng-repeat="usuario in usuarios track by $index">
+	  <td class="w3-container  w3-light-blue" style="width:100%" ng-model="usuario.descricao">{{usuario.descricao}}</td>
+	   <td>{{usuario.id}}</td>
+	  <td class="w3-container  w3-light-blue"><a class="texto" href="" ng-click="excluir(usuario)">Excluir</a></td>
+	</tr>
+  </tbody>
+</table> 
+</div> 
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right" ng-click="abrirTelaParticipantes()">Próximo <i class="fas fa-arrow-right"></i></</button>
+  <button class="w3-button w3-round-xlarge w3-red" ng-click="abrirIndex()">Cancelar</button>
+</div>
+<br>
+</div>
+</div>
+</div>
+
+
+
+
+<!--proxima tela-->
+ <div  ng-show="exibirTelaParticipantes">
+ <div class="w3-display-container">
+       <div class="w3-container w3-padding-16 w3-teal w3-center">
+       <h5>Participantes</h5>
+       </div>
+        <div class="w3-panel w3-padding-larg w3-display-topleft">
+       <div class="w3-bar">
+  <a href="telaAddNovoParticipante.html" class="w3-bar-item w3-circle w3-black w3-button">+</a>
+  </div>
+  </div>
+  </div>
+<div class="w3-container color_telas-primario">
+<hr>
+<div class="w3-container w3-display-topleft:16">
+    <h4>Ana 01</h4>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Fazer Pedido</button>
+  <button class="w3-button w3-round-xlarge w3-red">Cancelar/Sair</button>
+</div></div>
+<hr>
+  <div class="w3-container w3-display-topleft:16">
+    <h4>Pedro 02</h4>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Fazer Pedido</button>
+  <button class="w3-button w3-round-xlarge w3-red">Cancelar/Sair</button>
+</div></div>
+<hr>
+  <div class="w3-container w3-display-topleft:16">
+    <h4>Carlos 03</h4>
+  </div>
+<div class="w3-display w3-padding-32 w3-border ">
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Fazer Pedido</button>
+  <button class="w3-button w3-round-xlarge w3-red">Cancelar/Sair</button>
+</div>
+</div>
+</div>
+<hr>
+</div>
+
+
+
+
+<!--proxima tela-->
+  <div ng-show="exibirTelaCardapio">
+  <div class="w3-display-container ">
+       <div class="w3-container w3-padding-16 w3-teal w3-center">
+       <h5>Opção de Cardapio</h5>
+       </div>
+        <div class="w3-panel w3-padding-larg w3-display-topleft">
+       <div class="w3-bar">
+  <a href="telaParticipantes.html" class="w3-bar-item w3-circle w3-black w3-button">&laquo;</a>
+  </div>
+       </div>
+     </div> 
+
+ <br>
+<div class="w3-container w3-center w3-padding-16">
+  
+  <table class="w3-table w3-border">
+    <tr>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card w3-center">
+    <img src="img/peixe.jpg" style="width:100%">
+    <div class="w3-container">
+	  <a href="tela04ItemdoMenu.html" target="_blank">Peixes</a> 
+    </div>
+  </div>
+  </div></td>
+
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card  style="width:50%">
+    <img src="img/carne.jpg" style="width:100%">
+    <div class="w3-container">
+     <a href="tela04ItemdoMenu.html" target="_blank">Carne</a>
+    </div>
+  </div>
+  </div></td></tr>
+    
+    <tr>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card style="width:50%">
+    <img src="img/salada.jpg" style="width:100%">
+    <div class="w3-container">
+     <a href="tela04ItemdoMenu.html" target="_blank">Salada</a>
+    </div>
+  </div>
+</div></td>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card style="width:50%">
+    <img src="img/bebida.jpg" style="width:100%">
+    <div class="w3-container">
+     <a href="tela04ItemdoMenu.html" target="_blank">Bebida</a>
+    </div>
+  </div>
+  </div></td>
+    </tr>
+    <tr>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card style="width:50%">
+    <img src="img/sucos.jpg" style="width:100%">
+    <div class="w3-container w3-center">
+      <a href="tela04ItemdoMenu.html" target="_blank">Sucos Naturais</a>
+    </div>
+  </div>
+  </div></td>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card tyle="width:50%">
+    <img src="img/massa.jpg" style="width:100%">
+    <div class="w3-container">
+    <a href="tela04ItemdoMenu.html" target="_blank">Massa</a>
+    </div>
+  </div>
+</div></td>
+    </tr>
+    <tr>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card style="width:50%">
+    <img src="img/pratododia.jpg" style="width:100%">
+    <div class="w3-container w3-center">
+   <a href="tela04ItemdoMenu.html" target="_blank">Prato do dia</a>
+    </div>
+  </div>
+</div></td>
+      <td><div class="w3-third w3-container w3-center">
+  <div class="w3-card style="width:50%">
+    <img src="img/petisco.jpg" style="width:100%">
+    <div class="w3-container">
+   <a href="tela04ItemdoMenu.html" target="_blank">Petiscos</a>
+    </div>
+  </div>
+</div></td>
+    </tr>
+  </table>
+</div>
+<br>
+</div>
+
+
+
+
+<!--proxima tela-->
+<div ng-show="exibirTelaItemMenu">
+<div>
+<style> 
+		      fon{
+			      color:red;
+				  
+			  }
+			  </style></div>
+      <div class="w3-display-container">
+       <div class="w3-container w3-padding-16 w3-teal w3-center">
+       <h5>Itens do menu</h5>
+       </div>
+        <div class="w3-panel w3-padding-larg w3-display-topleft">
+       <div class="w3-bar">
+  <a href="telaParticipantes.html" class="w3-bar-item w3-circle w3-black w3-button">&laquo;</a>
+  </div>
+  </div>
+<div class="w3-panel w3-display-topright">
+<a href="telaListaParticipantes.html" class="w3-bar-item w3-round-xlarge w3-black w3-button">Ok </a>
+        </div>
+     </div> 
+   <br>
+		<table class="w3-table w3-bordered">
+    <tr >
+      <th >COMIDAS</th>
+      <th>QTD</th>
+      <th>VALORES</th>
+      <th>RACHA CONTA</th>
+    </tr>
+	<tr>
+      <td>ITEM 1</td>
+	        <td><input type="text" name="Nome" size="1" /></td>
+
+      <td>  <form id="formulario">
+    <input type="text" name="Nome" size="3" />
+	</form>
+		<td><input type="checkbox" name="opcoes" value="html"/>
+			<select name="time">
+			<option value="bota">TDS</option>
+			<option value="bota">SIM</option>
+			<option value="fla">NÃO</option>
+			</select> <br/></td>
+
+	</td>
+    </tr>
+
+      <td>ITEM 2</td>
+	        <td>
+				<input type="text" name="Nome" size="1" />
+				</td>
+      <td> 
+	  <form id="formulario">
+    <input type="text" name="Nome" size="3" />
+	</form>
+	<td>
+		<input type="checkbox" name="opcoes" value="html"/>
+			<select name="time">
+			<option value="bota">SIM</option>
+			<option value="fla">NÃO</option>
+			</select>
+			<br/></td>
+	</td>
+
+    </tr>
+    <tr>
+      <td>ITEM 3</td>
+	        <td><input type="text" name="Nome" size="1" /></td>
+
+      <td>  <form id="formulario">
+    <input type="text" name="Nome" size="3" />
+	</form>
+		<td><input type="checkbox" name="opcoes" value="html"/>
+			<select name="time">
+			<option value="bota">SIM</option>
+			<option value="fla">NÃO</option>
+			</select> <br/></td>
+
+	</td>
+    </tr>
+  </table>
+
+
+</div>
+
+
+
+
+<!--proxima tela-->
+ <div ng-show="exibriTelaConsumoParticipantes">
+ <div class="w3-display-container">
+       <div class="w3-container w3-teal w3-center w3-padding-16">
+       <h5>Participantes</h5>
+       </div>
+        <div class="w3-panel w3-display-topleft">
+       <div class="w3-bar">
+  <a href="#" class="w3-bar-item w3-circle w3-black w3-button">+</a>
+       </div>
+
+       </div>
+        <div class="w3-panel w3-display-topright"><button class="w3-btn w3-round-xlarge w3-black ">Encerrar</button>
+        </div>
+      </div>
+     
+<div class="w3-container color_telas-primario">
+<br>
+<div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Ana 01</th>
+      <th>divididos</th>
+      <th>valores</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td>1 Pizza</td>
+      <td>[#]</td>
+      <td>R$ 27,00</td>
+    </tr>
+    <tr>
+      <td>1 Cerveja</td>
+      <td>[]</td>
+      <td>R$ 6,00</td>
+    </tr>
+    <tr>
+      <td>1 Refrig.</td>
+      <td>[*]</td>
+      <td>R$ 5,00</td>
+    </tr>
+  </table>
+<div class="w3-container w3-center">
+<button class="w3-button w3-block w3-round-xlarge w3-black" style="width:100%">Novo pedido</button>
+</div>
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Pg.individual</button>
+  <button class="w3-button w3-round-xlarge w3-red">Dividir conta</button>
+</div>
+</div>
+
+<br>
+
+  <div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Pedro 02</th>
+      <th>divididos</th>
+      <th>valores</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td>1 pizza</td>
+      <td>[#]</td>
+      <td>R$ 27,00</td>
+    </tr>
+    <tr>
+      <td>1 Cerveja</td>
+      <td>[]</td>
+      <td>R$ 6,00</td>
+    </tr>
+    <tr>
+      <td>1 Refrig.</td>
+      <td>[#]</td>
+      <td>R$ 5,00</td>
+    </tr>
+  </table>
+<div class="w3-container w3-center">
+<button class="w3-button w3-block w3-round-xlarge w3-black" style="width:100%">Novo pedido</button>
+</div>
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Pg.individual</button>
+  <button class="w3-button w3-round-xlarge w3-red">Dividir conta</button>
+</div>
+</div>
+
+<br>
+
+
+  <div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Carlos 03</th>
+      <th>divididos</th>
+      <th>valores</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+<div class="w3-container w3-center">
+<button class="w3-button w3-block w3-round-xlarge w3-black" style="width:100%">Novo pedido</button>
+</div>
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-green w3-margin-right">Pg.individual</button>
+  <button class="w3-button w3-round-xlarge w3-red">Dividir conta</button>
+</div>
+</div>
+
+<br>
+</div>
+</div>
+
+
+
+
+<!--proxima tela-->
+ <div ng-show="exibirTelaCliente">
+ <div class="w3-display-container">
+       <div class="w3-container w3-padding-16 w3-teal w3-center">
+       <h5>Cliente 01</h5>
+       </div>
+        <div class="w3-panel w3-padding-larg w3-display-topleft">
+       <div class="w3-bar">
+  <a href="tela05ListaParticipantes.html" class="w3-bar-item w3-circle w3-black w3-button">&laquo;</a>
+  </div>
+  </div>
+     </div> 
+   <br>
+
+    <div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Ana</th>
+	  <th>Fechamento Individual</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td>pizza</td>
+      <td>Qtd 1 [/]</td>
+      <td>R$ 13,50</td>
+    </tr>
+    <tr>
+      <td>Cerveja</td>
+      <td>Qtd 1</td>
+      <td>R$ 6,00</td>
+    </tr>
+    <tr>
+      <td>1 Refrig.</td>
+      <td>Qtd 1 [/]</td>
+      <td>R$ 2,50</td>
+    </tr>
+  </table>
+  <br>
+  <div class="w3-display w3-center">
+    <h4>Total a pagar R$ 22,00</h4>
+  </div>
+  <br>
+<br>
+ <div class="w3-cell-row w3-center w3-margin-top">
+<a href="tela05ListaParticipantes.html" class="w3-button w3-round-xlarge w3-black">Pagar/Finalizar</a>
+</div>
+  
+</div>
+</div>
+
+
+
+<!--proxima tela-->
+<div ng-show="exibirTelaFinalizarServico">
+      <div class="w3-display-container">
+       <div class="w3-container w3-teal w3-center w3-padding-16">
+       <h5>Finalizando Serviço</h5>
+       </div>
+        <div class="w3-panel w3-display-topleft">
+       <div class="w3-bar">
+  <a href="#" class="w3-bar-item w3-circle w3-black w3-button"><-</a>
+       </div>
+       </div>
+      </div>
+<div class="w3-container color_telas-primario">
+<br>
+<div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Jorge 01  </th>
+      <th>Quantidades</th>
+      <th>Fechamento Individual</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td>1 Pizza</td>
+      <td>[3]</td>
+      <td>R$ 27,00</td>
+    </tr>
+    <tr>
+      <td>1 Cerveja</td>
+      <td>[2]</td>
+      <td>R$ 6,00</td>
+    </tr>
+    <tr>
+      <td>1 Refrig.</td>
+      <td>[2]</td>
+      <td>R$ 5,00</td>
+    </tr>
+  </table>
+
+
+<div class="w3-cell-row w3-center w3-margin-top">
+ 
+</div>
+</div>
+
+<br>
+
+  <div class="w3-container"> 
+<table class="w3-table w3-striped">
+    <tr>
+      <th>Gui 02</th>
+      <th>Quantidads</th>
+      <th>valores</th>
+    </tr>
+    </table>
+  </div>
+<div class="w3-display w3-padding-32 w3-border">
+<table class="w3-table w3-striped">
+    <tr>
+      <td>1 pizza</td>
+      <td>[1]</td>
+      <td>R$ 27,00</td>
+    </tr>
+    <tr>
+      <td>1 Cerveja</td>
+      <td>[2]</td>
+      <td>R$ 6,00</td>
+    </tr>
+    <tr>
+      <td>1 Refrig.</td>
+      <td>[1]</td>
+      <td>R$ 5,00</td>
+    </tr>
+  </table>
+
+<div class="w3-cell-row w3-center w3-margin-top">
+  
+</div>
+</div>
+
+<br>
+<div class="w3-cell-row w3-center w3-margin-top">
+<button class="w3-button w3-round-xlarge w3-red">Pagar conta</button>
+
+</div>
+</div>
+</div>
+
+
+
+
+<!--<script src="js/angular.min.js"></script>-->
+ <!--<script>
+    var app = angular.module("usuariosApp", []);
+	
+        app.controller("UsuariosController", function($scope){
+	    $scope.usuarios = 2;
+	    //$scope.id = 0;
+		
+		//$scope.qtdparticipantes = 2;
+	    $scope.resultado = 0;
+	    $scope.listaHistorico = [];
+	    $scope.itemEdicao = '';
+	    $scope.seqIdConta = 0;
+		
+		
+        var usuarios = [];
+
+        $scope.usuario = {};
+		$scope.usuarios = usuarios;
+
+        $scope.salvar = function(usuario){
+        usuarios.push(angular.copy(usuario));
+        $scope.usuario = {};
+ };
+ 
+ $scope.excluir = function(usuario){
+      for( i = 0, length=usuarios.length; i <length; i++){
+	      if(usuarios[i].id == usuario.id){
+		     usuarios.splice(i, 1);
+		  }
+	  }
+ }
+ 
+ 
+ /*$scope.abrirTela02Participantes = function(){
+		$scope.resultado = $scope.valorconta / $scope.qtdparticipantes;
+		$scope.exibirTelaAdd01Participantes = false;
+		$scope.exibirTela02Participantes = true;}*/
+  
+});
+</script> -->
+
+   <script type="text/javascript" src="extensoes/angular-1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="js/appRachaConta.js"></script>
+	<script type="text/javascript" src="js/ctrlConta.js"></script>
+
+   </body>
+</html>
